@@ -1,13 +1,16 @@
-//
-//  ViewController.h
-//  MD5Demo
-//
-//  Created by zhangmh on 12-7-16.
-//  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
-//
+
 
 #import <UIKit/UIKit.h>
-
-@interface ViewController : UIViewController
-
+#import "MyMD5.h"
+#import <CommonCrypto/CommonDigest.h>
+@interface ViewController : UIViewController<UITextFieldDelegate>
+{
+  IBOutlet  UITextField *inputField;
+  IBOutlet  UILabel     *outputLabel;
+  IBOutlet UILabel *sha1;
+  IBOutlet UILabel *sha256;
+  IBOutlet UIButton *encrypt;
+    
+}
+-(IBAction)BtnClick:(id)sender;
 @end

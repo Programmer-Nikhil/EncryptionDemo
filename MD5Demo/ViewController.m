@@ -1,10 +1,4 @@
-//
-//  ViewController.m
-//  MD5Demo
-//
-//  Created by zhangmh on 12-7-16.
-//  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
-//
+
 
 #import "ViewController.h"
 
@@ -14,21 +8,32 @@
 
 @implementation ViewController
 
+- (void)dealloc
+{
+    [outputLabel release];
+    [inputField  release];
+    [super dealloc];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+}
+-(IBAction)BtnClick:(id)sender
+{
+    outputLabel.text = [MyMD5 md5:inputField.text];
+    sha1.text = [MyMD5 sha1_Algo:inputField.text];
+    sha256.text = [MyMD5 sha256_Algo:inputField.text];
+    NSLog(@"Md5=%@",outputLabel.text);
+    NSLog(@"SHA1=%@",sha1.text);
+    NSLog(@"SHA256=%@",sha256.text);
 }
 
-- (void)viewDidUnload
+#pragma UItextfield Delegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
+    [inputField resignFirstResponder];
+    return YES;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-}
 
 @end
